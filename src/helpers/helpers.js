@@ -9,4 +9,9 @@ module.exports.register = function (Handlebars, options) {
     }
   });
 
+  Handlebars.registerHelper('block', function(index) {
+    var block = Math.floor(index / 3);
+    return block;
+  });
+
 };

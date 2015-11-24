@@ -19,6 +19,17 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
+
+        pkg: grunt.file.readJSON('package.json'),
+
+        // asset paths
+        project: {
+            sassDir: '<%= pkg.settings.sassPath %>',
+            cssDir: '<%= pkg.settings.cssPath %>',
+            cssDevDir: '<%= pkg.settings.cssDevPath %>',
+            jsDir: '<%= pkg.settings.scriptsPath %>'
+        },
+
         connect: {
             dev: {
                 options: {
@@ -57,10 +68,52 @@ module.exports = function(grunt) {
           }
         },
 
+        copy: {
+            js: {
+                files: [
+                  {expand: true, src: ['src/javascript/**'], dest: 'dist/assets/scripts', filter: 'isFile'}
+                ]
+            }
+        },
+
+        compass: {
+            prod: {
+                options: {
+                    sassDir: '<%= project.sassDir %>',
+                    cssDir: '<%= project.cssDir %>',
+                    outputStyle: 'expanded',
+                    noLineComments: true,
+                    force: true,
+                    sourcemap: true
+                }
+            },
+            dev: {
+                options: {
+                    sassDir: '<%= project.sassDir %>',
+                    cssDir: '<%= project.cssDevDir %>',
+                    outputStyle: 'expanded',
+                    noLineComments: false,
+                    force: true,
+                    sourcemap: true
+                }
+            }
+        },
+
         watch: {
             html: {
-                files: ['src/content/**/*.hbs'],
+                files: ['src/**/*.hbs'],
                 tasks: ['assemble']
+            },
+            css: {
+                files: 'src/sass/**/*.scss',
+                tasks: ['compass:dev'],
+                options: {
+                    livereload: true
+                }
+            },
+            js: {
+                files: 'src/javascript/**/*.js',
+                tasks: ['copy:js']
             }
         }
 
@@ -71,5 +124,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
 
     // simple start
-    grunt.registerTask('default', ['assemble', 'connect', 'watch']);
+    grunt.registerTask('default', ['assemble', 'copy:js', 'compass:dev', 'connect', 'watch']);
 };
