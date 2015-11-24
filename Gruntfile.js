@@ -71,7 +71,7 @@ module.exports = function(grunt) {
         copy: {
             js: {
                 files: [
-                  {expand: true, src: ['src/javascript/**'], dest: 'dist/assets/scripts', filter: 'isFile'}
+                  {expand: true, flatten: true, src: ['src/javascript/**'], dest: 'dist/assets/scripts', filter: 'isFile'}
                 ]
             }
         },
