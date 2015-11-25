@@ -106,10 +106,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: 'src/sass/**/*.scss',
-                tasks: ['compass:dev'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['compass:dev']
             },
             js: {
                 files: 'src/javascript/**/*.js',
