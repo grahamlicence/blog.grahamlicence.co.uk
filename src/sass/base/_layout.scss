@@ -20,4 +20,16 @@ button {
         overflow: hidden;
     }
 }
+
+body {
+    background-color: #575E66;
+    color: #fff;
+}
         
+a {
+    color: #6FF1E1;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
