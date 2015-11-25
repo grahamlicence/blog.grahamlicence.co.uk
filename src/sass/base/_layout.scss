@@ -24,12 +24,47 @@ button {
 body {
     background-color: #575E66;
     color: #fff;
+    font-family: Arial, sans-serif;
 }
         
 a {
     color: #6FF1E1;
+    cursor: pointer;
     text-decoration: none;
     &:hover {
         text-decoration: underline;
+    }
+}
+
+.main-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.posts {
+    padding-left: 0;
+}
+
+.post {
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.3s;
+    &.post-0,
+    &.show-post {
+        display: block;
+    }
+    &.post-0,
+    &.fade-in-post {
+        opacity: 1;
+    }
+}
+
+.load-more {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s;
+    &.hide {
+        opacity: 0;
+        display: none; 
     }
 }

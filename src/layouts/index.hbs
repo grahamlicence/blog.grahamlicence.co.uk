@@ -1,18 +1,21 @@
 {{>site-header}}
-  <div class="page-content">
-    <h2>{{ this.page.title }}</h2>
-    <p>ind</p>
-    <ul>
-      {{#withSort post 'data.posted'}}
+    <main class="main-content">
+        <h2>{{ this.page.title }}</h2>
+        {{#markdown}} 
+            {{> body}} 
+        {{/markdown}}
+        <ul class="posts">
+        {{#withSort post 'data.posted'}}
         {{#each this.pages }}
-        <li>
-          {{block @index}}
-          <h3><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></h3>
-          <p>{{ this.data.excerpt }}</p>
-          <p><a href="{{ replaceStr this.dest 'dist' '' }}">more..</a></p>
-        </li>
+            <li class="post post-{{block @index}}">
+                <h3><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></h3>
+                <p>
+                    {{ this.data.excerpt }}
+                    <a href="{{ replaceStr this.dest 'dist' '' }}">Read more..</a>
+                </p>
+            </li>
         {{/each}}
-      {{/withSort}}
-    </ul>
-  </div>
+        {{/withSort}}
+        </ul>
+    </main>
 {{>site-footer}}

@@ -73,6 +73,20 @@ module.exports = function(grunt) {
                 files: [
                   {expand: true, flatten: true, src: ['src/javascript/**'], dest: 'dist/assets/scripts', filter: 'isFile'}
                 ]
+            },
+            postImages: {
+                files: [
+                  {expand: true, cwd: 'src/content/post/', src: ['**/*.jpg'], dest: 'dist/post', filter: 'isFile'}
+                ]
+            }
+        },
+
+
+        clean: {
+            before: {
+                files: [{
+                    src: ['dist']
+                }]
             }
         },
 
@@ -102,7 +116,7 @@ module.exports = function(grunt) {
         watch: {
             html: {
                 files: ['src/**/*.hbs'],
-                tasks: ['assemble']
+                tasks: ['assemble', 'copy:postImages']
             },
             css: {
                 files: 'src/sass/**/*.scss',
@@ -121,5 +135,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
 
     // simple start
-    grunt.registerTask('default', ['assemble', 'copy:js', 'compass:dev', 'connect', 'watch']);
+    grunt.registerTask('default', ['clean', 'assemble', 'copy:postImages', 'copy:js', 'compass:dev', 'connect', 'watch']);
 };
