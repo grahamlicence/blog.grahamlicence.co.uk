@@ -70,6 +70,7 @@ blockquote {
 }
 
 .header {
+    width: 100%;
     max-width: 750px;
     margin: 0 auto;
     padding: 0.5em 0.5em 0;
@@ -79,12 +80,14 @@ blockquote {
 }
 
 .main-content {
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 0.5em 2em;
+    padding: 0 0.5em 3em;
 }
 
 .main-footer {
+    width: 100%;
     position: fixed;
     background-color: #575E66;
     bottom: 0;
