@@ -8,8 +8,13 @@
      */
     gl.posts = function ($posts) {
         var $btn = $('<a></a>'),
+            postsPerView = 3,
             showing = 0,
-            total = Math.floor($posts.find('.post').length / 3);
+            total = Math.floor($posts.find('.post').length / postsPerView);
+
+        if (total < postsPerView) {
+            return;
+        }
 
         /**
          * Loads more article links

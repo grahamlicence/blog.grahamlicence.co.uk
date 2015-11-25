@@ -21,10 +21,15 @@ button {
     }
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: #575E66;
     color: #fff;
     font-family: Arial, sans-serif;
+    position: relative;
 }
         
 a {
@@ -36,9 +41,55 @@ a {
     }
 }
 
+p {
+    margin: 0 0 1em;
+}
+
+blockquote {
+    position: relative;
+    padding: 0.5em 1em;
+    &:before {
+        content: '"';
+    }
+    &:before {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+    p {
+        display: inline-block;
+        margin-bottom: 0;
+        &:last-child {
+            &:after {
+                content: '"';
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.header {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0.5em 0.5em 0;
+    h1 {
+        margin: 0 0 1em;
+    }
+}
+
 .main-content {
     max-width: 600px;
     margin: 0 auto;
+    padding: 0 0.5em 2em;
+}
+
+.main-footer {
+    position: absolute;
+    background-color: #575E66;
+    bottom: 0;
+    padding: 0.5em 0.5em;
+    left: 0;
+    right: 0;
 }
 
 .posts {
