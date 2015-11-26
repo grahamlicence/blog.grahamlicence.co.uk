@@ -2,13 +2,15 @@
     <main class="main-content">
         <h2>{{ this.page.title }}</h2>
         {{#markdown}} 
-            {{> body}} 
+            {{> body}}
         {{/markdown}}
+
         <ul class="posts">
         {{#withSort post 'data.posted'}}
         {{#each this.pages }}
             <li class="post post-{{block @index}}">
                 <h3><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></h3>
+                <p class="post-date">{{formatDate this.data.posted "%d %B %Y"}}</p>
                 <p>
                     {{ this.data.excerpt }}
                     <a href="{{ replaceStr this.dest 'dist' '' }}">Read more..</a>

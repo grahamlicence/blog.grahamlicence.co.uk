@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                 sortby: 'posted',
                 sortorder: 'descending'
             }],
-            helpers: './src/helpers/**/*.js',
+            helpers: ['./src/helpers/**/*.js'],
             layout: 'page.hbs',
             layoutdir: './src/layouts/',
             partials: './src/partials/**/*.hbs'

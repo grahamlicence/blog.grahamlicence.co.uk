@@ -28,9 +28,5 @@
     "scriptsPath": "dist/assets/scripts",
     "cssDevPath": "dist/assets/styles",
     "scriptsDevPath": "dist/assets/scripts"
-  },
-  "dependencies": {
-    "handlebars.moment": "^1.0.3",
-    "moment": "^2.10.6"
-  }
+  } 
 }

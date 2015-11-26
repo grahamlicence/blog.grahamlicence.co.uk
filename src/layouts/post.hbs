@@ -1,6 +1,7 @@
 {{>site-header}}
   <main class="main-content">
     <h2>{{ this.page.title }}</h2>
+    <p class="post-date">{{formatDate this.page.posted "%d %B %Y"}}</p>
     {{#markdown}} 
       {{> body}} 
     {{/markdown}}
