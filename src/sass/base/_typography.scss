@@ -1,0 +1,45 @@
+h2 {
+    font-size: 2em;
+    margin: 0 0 0.6em;
+}
+
+h3 {
+    font-size: 1.4em;
+    margin: 0 0 0.6em;
+}
+
+a {
+    color: #6FF1E1;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+blockquote {
+    position: relative;
+    padding: 0.5em 1em;
+    &:before {
+        content: '"';
+    }
+    &:before {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+    p {
+        display: inline-block;
+        margin-bottom: 0;
+        &:last-child {
+            &:after {
+                content: '"';
+                display: inline-block;
+            }
+        }
+    }
+}
