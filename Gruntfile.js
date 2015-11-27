@@ -140,5 +140,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
 
     // simple start
-    grunt.registerTask('default', ['clean', 'assemble', 'copy:postImages', 'copy:js', 'compass:dev', 'connect', 'watch']);
+    grunt.registerTask('default', ['clean', 'assemble', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:dev', 'connect', 'watch']);
 };
