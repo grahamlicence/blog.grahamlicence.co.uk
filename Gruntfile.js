@@ -81,7 +81,7 @@ module.exports = function(grunt) {
             },
             icons: { 
                 files: [
-                  {expand: true, flatten: true, src: ['src/content/favicon.png'], dest: 'dist/', filter: 'isFile'}
+                  {expand: true, flatten: true, src: ['src/content/*.ico'], dest: 'dist/', filter: 'isFile'}
                 ]
             }
         },
