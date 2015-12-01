@@ -5,15 +5,24 @@ module.exports.register = function (Handlebars, options) {
 
     Handlebars.registerHelper('replaceStr', function (haystack, needle, replacement) {
         if (haystack && needle) {
-          return haystack.replace(needle, replacement);
+          return haystack.replace(needle, replacement).replace('index.html', '');
         } else {
           return '';
         }
     });
 
+    // group in 3s
     Handlebars.registerHelper('block', function(index) {
         var block = Math.floor(index / 3);
         return block;
+    });
+
+    // return a canonical url
+    Handlebars.registerHelper('canonical', function(dirname, basename, ext) {
+        var base = 'http://blog.grahamlicence.co.uk/',
+            url = dirname + '/' + basename + ext,
+            path = url.replace('dist/', '').replace('index.html', '');
+        return base + path;
     });
 
     /**

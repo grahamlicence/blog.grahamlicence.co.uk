@@ -8,6 +8,7 @@
         <ul class="posts">
         {{#withSort post 'data.posted'}}
         {{#each this.pages }}
+            {{#is this.data.post true}}
             <li class="post post-{{block @index}}">
                 <h3><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></h3>
                 <p class="post-date">{{formatDate this.data.posted "%d %B %Y"}}</p>
@@ -16,6 +17,7 @@
                     <a href="{{ replaceStr this.dest 'dist' '' }}">Read more..</a>
                 </p>
             </li>
+            {{/is}}
         {{/each}}
         {{/withSort}}
         </ul>
