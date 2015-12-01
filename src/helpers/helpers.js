@@ -17,12 +17,21 @@ module.exports.register = function (Handlebars, options) {
         return block;
     });
 
-    // return a canonical url
+    /**
+       * {{canonical}}
+       * Builds a canonical url, stripping out dist dir and index.html
+       * @param  {String} dirname file firectory location
+       * @param  {String} basename filename
+       * @param  {String} ext file extension
+       * @return {String} formattedUrl Canonical url
+       */
     Handlebars.registerHelper('canonical', function(dirname, basename, ext) {
         var base = 'http://blog.grahamlicence.co.uk/',
             url = dirname + '/' + basename + ext,
-            path = url.replace('dist/', '').replace('index.html', '');
-        return base + path;
+            path = url.replace('dist/', '').replace('index.html', ''),
+            formattedUrl = base + path;
+
+        return formattedUrl;
     });
 
     /**
