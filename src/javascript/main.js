@@ -2,7 +2,7 @@
     var gl = gl || {};
 
     /**
-     * Loads page via agax
+     * Loads page via ajax
      * @private
      * @param {jQuery} $posts - element of posts list
      */
@@ -47,6 +47,10 @@
             .on('click', loadMore);
     }
 
+    /**
+     * Init
+     * @private
+     */
     gl.init = function () {
         var $posts = $('.posts');
         if ($posts.length) {
