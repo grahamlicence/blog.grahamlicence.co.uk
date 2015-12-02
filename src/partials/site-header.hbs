@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>Graham Licence /blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Graham Licence" />
-        <link rel="canonical" href="{{canonical dirname basename ext}}">
-        <link href="/assets/styles/main.css" media="all" rel="stylesheet" />
+
+        <title>{{default title page.basename}}</title>
+
+        <link rel="canonical" href="{{canonical dirname basename ext}}" />
+        <link rel="stylesheet" href="/assets/styles/main.css" media="all" />
+
+        <meta name="description" content="{{page.excerpt}}" />
     </head>
     <body>
         <header class="header">
-            <h1><a href="/">b/og</a></h1>
+            <h2><a href="/">/blog</a></h2>
         </header>
