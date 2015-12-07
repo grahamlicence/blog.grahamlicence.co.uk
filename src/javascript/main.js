@@ -1,3 +1,6 @@
+/*!  
+ * blog.grahamlicence.co.uk | https://github.com/grahamlicence/grahamlicence.co.uk
+ */
 (function () {
     var gl = gl || {};
 
@@ -9,7 +12,7 @@
     gl.posts = function ($posts) {
         var $btn = $('<a></a>'),
             postsPerView = 3,
-            showing = 0,
+            showing = 1,
             total = Math.floor($posts.find('.post').length / postsPerView);
 
         if (total < postsPerView) {
@@ -24,9 +27,8 @@
         function loadMore (e) {
             e.preventDefault();
             var $newPosts;
-            console.log(showing + '/' + total)
+
             if (showing < total) {
-                showing++;
                 $newPosts = $posts.find('.post-' + showing);
                 $newPosts.each(function(i) {
                     var wait = i * 300;
@@ -35,6 +37,7 @@
                         $newPosts.eq(i).addClass('fade-in-post');
                     }, wait);
                 });
+                showing++;
                 if (showing === total) {
                     $btn.addClass('hide');
                 }
@@ -59,6 +62,5 @@
     }
 
     gl.init();
-
 
 })();
