@@ -111,6 +111,11 @@ module.exports = function(grunt) {
                 files: [{
                     src: ['dist']
                 }]
+            },
+            jsmin: {
+                files: [{
+                    src: ['dist/assets/scripts/min']
+                }]                
             }
         },
 
@@ -138,6 +143,9 @@ module.exports = function(grunt) {
         },
 
         uglify: {
+            options: {
+                preserveComments: 'some'
+            },
             build: {
                 src: [
                     'dist/assets/scripts/*'
@@ -171,5 +179,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean', 'assemble:dev', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:dev', 'connect', 'watch']);
     
     // production
-    grunt.registerTask('prod', ['clean', 'assemble:prod', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:prod']);
+    grunt.registerTask('prod', ['clean', 'assemble:prod', 'copy:postImages', 'copy:js', 'uglify', 'copy:icons', 'compass:prod']);
 };
