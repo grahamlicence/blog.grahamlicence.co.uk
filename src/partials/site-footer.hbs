@@ -4,8 +4,12 @@
             <a href="https://github.com/grahamlicence">github</a>
         </footer>
 
+        {{#if production}}
+        <script src="/assets/scripts/min/main.min.js"></script>
+        {{else}}
         <script src="/assets/scripts/jquery-1.11.3.min.js"></script>
         <script src="/assets/scripts/main.js"></script>
+        {{/if}}
 
         {{>analytics}}
 

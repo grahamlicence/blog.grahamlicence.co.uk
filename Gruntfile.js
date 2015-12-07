@@ -53,7 +53,26 @@ module.exports = function(grunt) {
             layoutdir: './src/layouts/',
             partials: './src/partials/**/*.hbs'
           },
-          posts: {
+          dev: {
+            options: {
+                production: false
+            },
+            files: [{
+              cwd: './src/content/',
+              dest: './dist/',
+              expand: true,
+              src: ['**/*.hbs', '!_pages/**/*.hbs']
+            }, {
+              cwd: './src/content/_pages/',
+              dest: './dist/',
+              expand: true,
+              src: '**/*.hbs'
+            }]
+          },
+          prod: {
+            options: {
+                production: true
+            },
             files: [{
               cwd: './src/content/',
               dest: './dist/',
@@ -100,7 +119,7 @@ module.exports = function(grunt) {
                 options: {
                     sassDir: '<%= project.sassDir %>',
                     cssDir: '<%= project.cssDir %>',
-                    outputStyle: 'expanded',
+                    outputStyle: 'compressed',
                     noLineComments: true,
                     force: true,
                     sourcemap: true
@@ -115,6 +134,15 @@ module.exports = function(grunt) {
                     force: true,
                     sourcemap: true
                 }
+            }
+        },
+
+        uglify: {
+            build: {
+                src: [
+                    'dist/assets/scripts/*'
+                ],
+                dest: 'dist/assets/scripts/min/main.min.js'
             }
         },
 
@@ -139,6 +167,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('assemble');
 
-    // simple start
-    grunt.registerTask('default', ['clean', 'assemble', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:dev', 'connect', 'watch']);
+    // local dev
+    grunt.registerTask('default', ['clean', 'assemble:dev', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:dev', 'connect', 'watch']);
+    
+    // production
+    grunt.registerTask('prod', ['clean', 'assemble:prod', 'copy:postImages', 'copy:js', 'copy:icons', 'compass:prod']);
 };
