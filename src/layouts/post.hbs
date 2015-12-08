@@ -2,7 +2,11 @@
 
   <main class="main-content">
     <h1>{{ this.page.title }}</h1>
-    <p class="post-date">{{formatDate this.page.posted "%d %B %Y"}}</p>
+    <p class="post-date">
+      <time datetime="{{formatDate this.page.posted "%Y-%m-%d"}}" pubdate>
+          {{formatDate this.page.posted "%d %B %Y"}}
+      </time>
+    </p>
     {{#markdown}} 
       {{> body}} 
     {{/markdown}}

@@ -12,7 +12,11 @@
             {{#is this.data.post true}}
             <li class="post post-{{block @index}}">
                 <h3><a href="{{ replaceStr this.dest 'dist' '' }}">{{ this.data.title }}</a></h3>
-                <p class="post-date">{{formatDate this.data.posted "%d %B %Y"}}</p>
+                <p class="post-date">
+                    <time datetime="{{formatDate this.data.posted "%Y-%m-%d"}}" pubdate>
+                        {{formatDate this.data.posted "%d %B %Y"}}
+                    </time>
+                </p>
                 <p>
                     {{ this.data.excerpt }}
                     <a href="{{ replaceStr this.dest 'dist' '' }}">Read more..</a>
